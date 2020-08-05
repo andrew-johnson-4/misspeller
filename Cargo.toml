@@ -1,6 +1,6 @@
 [package]
 name = "misspeller"
-version = "0.0.5"
+version = "0.0.6"
 authors = ["Andrew <andrew@subarctic.org>"]
 license = "MIT OR Apache-2.0"
 description = "Take a word and return a list of common spelling mistakes"

@@ -9,3 +9,7 @@ Types of Common Mistakes (not all applicable to all languages)
 - ☐ Phonetical Misspelling / Ateji
 - ☐ Slurred Word
 - ☐ Missed or Misplaced Modifier (accent or other modifiers)
+
+```rust
+./misspeller [word]
+```
