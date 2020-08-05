@@ -3,8 +3,8 @@ Take correctly spelled words and return common spelling mistakes
 
 Types of Common Mistakes (not all applicable to all languages)
 - ☑ Typo
-- ☐ Vowel Mistake
-- ☐ Consonant Mistake
+- ☑ Vowel Mistake
+- ☑ Consonant Mistake
 - ☐ Contraction Mistake
 - ☐ Phonetical Misspelling / Ateji
 - ☐ Slurred Word
