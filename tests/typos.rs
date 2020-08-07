@@ -2,8 +2,11 @@ use misspeller::misspell;
 
 #[test]
 fn typo1() {
-   println!("misspell hello");
-   for s in misspell("hello").iter() {
-      println!("{}", s);
-   }
+   let w = "hello";
+   assert!( misspell(w).iter().any(|s| s=="heelo") );
+   assert!( misspell(w).iter().any(|s| s=="helo") );
+   assert!( misspell(w).iter().any(|s| s=="hllo") );
+   assert!( misspell(w).iter().any(|s| s=="helllo") );
+   assert!( misspell(w).iter().any(|s| s=="helloo") );
+   assert!( misspell(w).iter().any(|s| s=="hell") );
 }
