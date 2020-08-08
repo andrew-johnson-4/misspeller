@@ -1,17 +1,30 @@
 use std::collections::HashSet;
 
-static KEYBOARDS: [&str; 1] = [
+static KEYBOARDS: [&str; 2] = [
    "abcdefghijklmnopqrstuvwxyz",
+   "abcdefghijklmnopqrstuvwxyzñõàèìòùäëïöüÿâêîôû",
 ];
-static KEYBOARD_VOWELS: [&str; 1] = [
+static KEYBOARD_VOWELS: [&str; 2] = [
    "aeiouy",
+   "aeiouyõàèìòùäëïöüÿâêîôû",
 ];
-static KEYBOARD_CONSONANTS: [&str; 1] = [
+static KEYBOARD_CONSONANTS: [&str; 2] = [
    "bcdfghjklmnpqrstvwxz",
+   "bcdfghjklmnpqrstvwxzñ",
 ];
 
-pub fn detect_keyboard(_s: &str) -> usize {
-   0
+pub fn detect_keyboard(s: &str) -> usize {
+   let mut best = (0, 0);
+   for ki in 0..KEYBOARDS.len() {
+      let count_contains = s.chars().filter(|c| KEYBOARDS[ki].contains(*c)).count();
+      if count_contains==s.len() {
+         return ki;
+      }
+      if best.1 < count_contains {
+         best = (ki, count_contains);
+      }
+   }
+   best.0
 }
 pub fn detect_keyboard_layout(s: &str) -> &str {
    KEYBOARDS[detect_keyboard(s)]
