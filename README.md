@@ -17,5 +17,6 @@ Types of Common Mistakes (not all applicable to all languages)
 - ☑ Missed or Misplaced Modifier (accent or other modifiers)
 
 ```rust
-./misspeller [word]
+cargo install misspeller
+misspeller [word]
 ```
