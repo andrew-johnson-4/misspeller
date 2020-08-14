@@ -37,6 +37,19 @@ pub fn detect_keyboard_consonants(s: &str) -> &str {
    KEYBOARD_CONSONANTS[detect_keyboard(s)]
 }
 
+pub fn variant_mistakes(s: &str) -> Vec<String> {
+   let s = s.chars().collect::<Vec<char>>();
+   let mut ts = Vec::new();
+   for oi in 0..s.len() {
+      let c = s[oi];
+      let cs = cjk::variants(c);
+      for ct in cs.iter() {
+         ts.push(format!("{}{}{}", String::from_iter(&s[..oi]), ct, String::from_iter(&s[oi+1..])));
+      }
+   }
+   ts
+}
+
 pub fn ateji_mistakes(s: &str) -> Vec<String> {
    let s = s.chars().collect::<Vec<char>>();
    let mut ts = Vec::new();
@@ -146,6 +159,9 @@ pub fn misspell(s: &str) -> HashSet<String> {
       ms.insert(w);
    }
    for w in ateji_mistakes(s).into_iter() {
+      ms.insert(w);
+   }
+   for w in variant_mistakes(s).into_iter() {
       ms.insert(w);
    }
    if ms.contains(s) {
