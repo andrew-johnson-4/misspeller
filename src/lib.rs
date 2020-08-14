@@ -50,6 +50,20 @@ pub fn variant_mistakes(s: &str) -> Vec<String> {
    ts
 }
 
+pub fn slur_mistakes(s: &str) -> Vec<String> {
+   let s = s.chars().collect::<Vec<char>>();
+   let mut ts = Vec::new();
+   for oi in 0..s.len() {
+      if oi+2 <= s.len() {
+         ts.push(format!("{}{}", String::from_iter(&s[..oi]), String::from_iter(&s[oi+2..])));
+      }
+      if oi+3 <= s.len() {
+         ts.push(format!("{}{}", String::from_iter(&s[..oi]), String::from_iter(&s[oi+3..])));
+      }
+   }
+   ts
+}
+
 pub fn ateji_mistakes(s: &str) -> Vec<String> {
    let s = s.chars().collect::<Vec<char>>();
    let mut ts = Vec::new();
@@ -162,6 +176,9 @@ pub fn misspell(s: &str) -> HashSet<String> {
       ms.insert(w);
    }
    for w in variant_mistakes(s).into_iter() {
+      ms.insert(w);
+   }
+   for w in slur_mistakes(s).into_iter() {
       ms.insert(w);
    }
    if ms.contains(s) {
