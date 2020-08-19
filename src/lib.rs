@@ -144,6 +144,12 @@ pub fn typos(s: &str) -> Vec<String> {
       ts.push(format!("{}{}", String::from_iter(&s[..oi]), String::from_iter(&s[oi+1..])));
    }
    for oi in 0..s.len() {
+      //swap key
+      if oi+1 < s.len() {
+         ts.push(format!("{}{}{}{}", String::from_iter(&s[..oi]), s[oi+1], s[oi], String::from_iter(&s[oi+2..])));
+      }
+   }
+   for oi in 0..s.len() {
       //replace key
       for k in kb.chars() {
          ts.push(format!("{}{}{}", String::from_iter(&s[..oi]), k, String::from_iter(&s[oi+1..])));
