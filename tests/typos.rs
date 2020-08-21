@@ -12,4 +12,9 @@ fn typo1() {
    assert!( misspell(w).iter().any(|s| s=="hlelo") );
    assert!( misspell(w).iter().any(|s| s=="ehllo") );
    assert!( misspell(w).iter().any(|s| s=="helol") );
+   assert!( misspell("ab").iter().any(|s| s=="ba") );
+   assert!( misspell("abc").iter().any(|s| s=="bac") );
+   assert!( misspell("abc").iter().any(|s| s=="bca") );
+   assert!( misspell("abc").iter().any(|s| s=="cab") );
+   assert!( misspell("abc").iter().any(|s| s=="cba") );
 }
